@@ -5,4 +5,17 @@
     ':gitSignOff',
   ],
   automergeStrategy: 'squash',
+  customManagers: [
+    {
+      customType: 'regex',
+      managerFilePatterns: [
+        '/^Dockerfile$/',
+      ],
+      matchStrings: [
+        'ARG\\sTELERISING_API_VERSION="(?<currentValue>.*?)"\\n',
+      ],
+      depNameTemplate: 'sunsettrack4/telerising-api',
+      datasourceTemplate: 'github-releases',
+    },
+  ],
 }
