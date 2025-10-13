@@ -1,4 +1,4 @@
-FROM alpine:latest AS build
+FROM alpine:latest@sha256:4b7ce07002c69e8f3d704a9c5d6fd3053be500b7f1c69fc0d80990c2ad8dd412 AS build
 
 RUN apk update && \
     apk add --no-cache curl jq unzip && \
@@ -16,7 +16,7 @@ RUN \
     curl -sSL $url | busybox unzip - && \
     chmod ug+x telerising/api
 
-FROM debian:stable-slim
+FROM debian:stable-slim@sha256:d6743b7859c917a488ca39f4ab5e174011305f50b44ce32d3b9ea5d81b291b3b
 
 WORKDIR /app
 
