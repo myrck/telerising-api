@@ -16,7 +16,8 @@ docker run -d \
 ```
 
 > [!NOTE]  
-> The container will run using a user uid and gid 1000 by default, add `--user <your-UID>:<your-GID>` to the docker command to adjust it if necessary. Make sure this match the permissions of your settings.json file and cookie_files directory.
+> The container will run using a user uid and gid 1000 by default, add `--user <your-UID>:<your-GID>` to the docker command to adjust it if necessary.
+> Make sure this match the permissions of your settings.json file and cookie_files directory.
 
 **or `docker-compose`**
 
