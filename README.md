@@ -10,12 +10,13 @@ docker run -d \
   --name telerising-api \
   -p 5000:5000 \
   --mount type=bind,source="/path/to/settings.json",target=/app/settings.json \
+  --mount type=bind,source="/path/to/cookie_files/dir",target=/app/cookie_files \
   --restart=unless-stopped \
   myrck/telerising-api:latest
 ```
 
 > [!NOTE]  
-> The container will run using a user uid and gid 1000 by default, add `--user <your-UID>:<your-GID>` to the docker command to adjust it if necessary. Make sure this match the permissions of your settings.json file.
+> The container will run using a user uid and gid 1000 by default, add `--user <your-UID>:<your-GID>` to the docker command to adjust it if necessary. Make sure this match the permissions of your settings.json file and cookie_files directory.
 
 **or `docker-compose`**
 
@@ -26,6 +27,7 @@ services:
     container_name: telerising-api
     volumes:
       - /path/to/settings.json:/app/settings.json
+      - /path/to/cookie_files:/app/cookie_files
     ports:
       - 5000:5000
     user: 1000:1000
