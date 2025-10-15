@@ -1,3 +1,9 @@
+FROM curlimages/curl@sha256:463eaf6072688fe96ac64fa623fe73e1dbe25d8ad6c34404a669ad3ce1f104b6 AS tzdata
+
+RUN \
+    echo "**** download tzdata.zi ****" && \
+    curl -L -o tzdata.zi https://raw.githubusercontent.com/eggert/tz/main/tzdata.zi
+
 FROM alpine:latest@sha256:4b7ce07002c69e8f3d704a9c5d6fd3053be500b7f1c69fc0d80990c2ad8dd412 AS build
 
 RUN apk update && \
@@ -16,21 +22,24 @@ RUN \
     curl -sSL $url | busybox unzip - && \
     chmod ug+x telerising/api
 
-FROM debian:stable-slim@sha256:d6743b7859c917a488ca39f4ab5e174011305f50b44ce32d3b9ea5d81b291b3b
+FROM frolvlad/alpine-glibc:alpine-3.22@sha256:368078d5f0efffa4fd16ecf50a3f43864e0542b15faccb74618f31fdb7f8ae02
 
 WORKDIR /app
 
-RUN groupadd -g 1000 telerising && \
-    useradd --shell /sbin/nologin \
-        --no-create-home --uid 1000 -g telerising telerising && \
-    chown -R telerising:telerising /app
+RUN addgroup -g 1000 telerising \
+    && adduser --shell /sbin/nologin --disabled-password \
+    --no-create-home --uid 1000 --ingroup telerising telerising \
+    && chown -R telerising:telerising /app
 
 RUN \
     echo "**** install dependencies ****" && \
-    apt update && apt install -y --no-install-recommends \
-        wget && \
-    apt clean && rm -rf /var/lib/apt/lists/*
+    apk update && \
+    apk add --no-cache \
+        tzdata \
+        libstdc++ && \
+    rm -rf /var/cache/apk/*
 
+COPY --from=tzdata /home/curl_user/tzdata.zi /usr/share/zoneinfo/
 COPY --from=build --chown=telerising:telerising /telerising /app
 
 USER telerising
