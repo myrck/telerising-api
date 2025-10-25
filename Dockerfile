@@ -10,7 +10,7 @@ RUN apk update && \
     apk add --no-cache curl jq unzip && \
     rm -rf /var/cache/apk/*
 
-ARG TELERISING_API_VERSION="0.14.8"
+ARG TELERISING_API_VERSION="0.14.9"
 
 RUN \
     echo "**** download telerising-api ****" && \
