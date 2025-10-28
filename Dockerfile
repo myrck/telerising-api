@@ -22,7 +22,7 @@ RUN \
     curl -sSL $url | busybox unzip - && \
     chmod ug+x telerising/api
 
-FROM frolvlad/alpine-glibc:alpine-3.22@sha256:368078d5f0efffa4fd16ecf50a3f43864e0542b15faccb74618f31fdb7f8ae02
+FROM frolvlad/alpine-glibc:alpine-3.22@sha256:5e04e7d430ba5b822eeaa7e1975d18e3df2bccad52a4146008d0654e7ccf8c37
 
 WORKDIR /app
 
