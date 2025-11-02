@@ -17,5 +17,17 @@
       depNameTemplate: 'sunsettrack4/telerising-api',
       datasourceTemplate: 'github-releases',
     },
+    {
+      customType: 'regex',
+      versioningTemplate: 'regex:^\\d+-v\\d+\\.\\d+\\.\\d+-experiment-(?<major>\\d+)\\.(?<minor>\\d+)-by-fds97AVVS-(?<build>\\w+)$',
+      managerFilePatterns: [
+        '/^Dockerfile.devmib$/',
+      ],
+      matchStrings: [
+        'ARG\\sTELERISING_API_VERSION="(?<currentValue>.*?)"\\n',
+      ],
+      depNameTemplate: 'DEvmIb/telerising-unofficial',
+      datasourceTemplate: 'github-releases',
+    },
   ],
 }
