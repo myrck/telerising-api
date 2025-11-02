@@ -34,3 +34,24 @@ services:
     user: 1000:1000
     restart: unless-stopped
 ```
+
+## Unofficial [DEvmIb](https://github.com/DEvmIb/telerising-unofficial) Build
+
+Support page: https://www.kodinerds.net/thread/80400-bunker-home
+
+Wiki: https://github.com/DEvmIb/telerising-unofficial/wiki
+
+```yaml
+services:
+  telerising-api:
+    image: myrck/telerising-api:latest-devmib
+    container_name: telerising-api
+    volumes:
+      - /path/to/settings.json:/app/settings.json
+      - /path/to/cookie_files:/app/cookie_files
+      - /path/to/wvd.wvd:/app/wvd.wvd
+    ports:
+      - 5000:5000
+    user: 1000:1000
+    restart: unless-stopped
+```
