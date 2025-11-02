@@ -1,9 +1,9 @@
-name: CI
+name: CI DEvmIb
 
 on:
   push:
     paths:
-      - 'Dockerfile.devimb'
+      - 'Dockerfile.devmib'
 
 jobs:
   docker:
@@ -20,7 +20,7 @@ jobs:
         name: Get telerising-api Version
         id: version
         run: |
-          version=$(sed -ne "s/.*TELERISING_API_VERSION=\"\(.*\)\"/\1/p" Dockerfile.devimb)
+          version=$(sed -ne "s/.*TELERISING_API_VERSION=\"\(.*\)\"/\1/p" Dockerfile.devmib)
           echo "version=$version" >> $GITHUB_OUTPUT
           echo "tag=v$version" >> $GITHUB_OUTPUT
       -
@@ -55,10 +55,10 @@ jobs:
         uses: docker/build-push-action@263435318d21b8e681c14492fe198d362a7d2c83 # v6
         with:
           context: .
-          file: ./Dockerfile.devimb
+          file: ./Dockerfile.devmib
           push: true
           tags: |
-            docker.io/myrck/telerising-api:latest-devimb
+            docker.io/myrck/telerising-api:latest-devmib
             docker.io/myrck/telerising-api:${{ steps.version.outputs.version }}
-            ghcr.io/myrck/telerising-api:latest-devimb
+            ghcr.io/myrck/telerising-api:latest-devmib
             ghcr.io/myrck/telerising-api:${{ steps.version.outputs.version }}
