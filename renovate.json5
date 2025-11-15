@@ -30,4 +30,18 @@
       datasourceTemplate: 'github-releases',
     },
   ],
+  "packageRules": [
+    {
+      "matchFileNames": [".github/**"],
+      "automerge": true,
+    },
+    {
+      "matchFileNames": ["Dockerfile"],
+      "groupName": "Docker Dependencies",
+    },
+    {
+      "matchFileNames": ["Dockerfile.devmib"],
+      "groupName": "Docker Dependencies (DEvmIb)",
+    },
+  ],
 }
