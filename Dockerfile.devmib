@@ -43,6 +43,9 @@ RUN \
 COPY --from=tzdata /home/curl_user/tzdata.zi /usr/share/zoneinfo/
 COPY --from=build --chown=telerising:telerising /telerising /app
 
+RUN \
+    chmod 777 /app
+
 USER telerising
 
 HEALTHCHECK --start-period=10s --start-interval=1s --interval=30s --timeout=5s --retries=3 \
