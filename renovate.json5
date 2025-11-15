@@ -30,4 +30,10 @@
       datasourceTemplate: 'github-releases',
     },
   ],
+  "packageRules": [
+    {
+      "matchFileNames": [".github/**"],
+      "automerge": true,
+    },
+  ],
 }
