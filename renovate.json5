@@ -5,6 +5,9 @@
     ':gitSignOff',
   ],
   automergeStrategy: 'squash',
+  dockerfile: {
+    managerFilePatterns: ['Dockerfile.devmib'],
+  },
   customManagers: [
     {
       customType: 'regex',
