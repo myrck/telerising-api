@@ -4,13 +4,13 @@ RUN \
     echo "**** download tzdata.zi ****" && \
     curl -L -o tzdata.zi https://raw.githubusercontent.com/eggert/tz/main/tzdata.zi
 
-FROM alpine:latest@sha256:4b7ce07002c69e8f3d704a9c5d6fd3053be500b7f1c69fc0d80990c2ad8dd412 AS build
+FROM alpine:latest@sha256:865b95f46d98cf867a156fe4a135ad3fe50d2056aa3f25ed31662dff6da4eb62 AS build
 
 RUN apk update && \
     apk add --no-cache curl jq unzip && \
     rm -rf /var/cache/apk/*
 
-ARG TELERISING_API_VERSION="1760978547-v0.14.8-experiment-6.2-by-fds97AVVS-16266ba"
+ARG TELERISING_API_VERSION="1765739520-v0.14.9-experiment-6.5-by-fds97AVVS-f4de2d5"
 
 RUN \
     echo "**** download telerising-api ****" && \
@@ -23,7 +23,7 @@ RUN \
     mv telerising-* telerising && \
     chmod ug+x telerising/api
 
-FROM frolvlad/alpine-glibc:alpine-3.22@sha256:ffb7fcd92d6de51b3e8bdb51f679f14dadeef3bd7f0d449d07d1f844e659bd4f
+FROM frolvlad/alpine-glibc:alpine-3.22@sha256:f067ad62777a579372f0e147cb95da5f34ed3d3a32b42b124115573410bce8c4
 
 WORKDIR /app
 
