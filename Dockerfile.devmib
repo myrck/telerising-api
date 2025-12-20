@@ -21,9 +21,10 @@ RUN \
         | jq -r '.assets[] | select(.name | contains("amd64-bookworm")) | select(.name | contains("zip")) | .browser_download_url') && \
     curl -sSL $url | busybox unzip - && \
     mv telerising-* telerising && \
-    chmod ug+x telerising/api
+    chmod ug+x telerising/api && \
+    chmod ug+x telerising/ld-linux-x86-64.so.2
 
-FROM frolvlad/alpine-glibc:alpine-3.22@sha256:f067ad62777a579372f0e147cb95da5f34ed3d3a32b42b124115573410bce8c4
+FROM frolvlad/alpine-glibc:alpine-3.22@sha256:5e04e7d430ba5b822eeaa7e1975d18e3df2bccad52a4146008d0654e7ccf8c37
 
 WORKDIR /app
 
@@ -53,4 +54,4 @@ HEALTHCHECK --start-period=10s --start-interval=1s --interval=30s --timeout=5s -
 
 EXPOSE 5000
 
-CMD ["./api"]
+CMD ["./ld-linux-x86-64.so.2", "./api"]
