@@ -1,4 +1,4 @@
-FROM curlimages/curl@sha256:935d9100e9ba842cdb060de42472c7ca90cfe9a7c96e4dacb55e79e560b3ff40 AS tzdata
+FROM curlimages/curl@sha256:d94d07ba9e7d6de898b6d96c1a072f6f8266c687af78a74f380087a0addf5d17 AS tzdata
 
 RUN \
     echo "**** download tzdata.zi ****" && \
@@ -24,7 +24,7 @@ RUN \
     chmod ug+x telerising/api && \
     chmod ug+x telerising/ld-linux-x86-64.so.2
 
-FROM frolvlad/alpine-glibc:alpine-3.22@sha256:5e04e7d430ba5b822eeaa7e1975d18e3df2bccad52a4146008d0654e7ccf8c37
+FROM frolvlad/alpine-glibc:alpine-3.22@sha256:f067ad62777a579372f0e147cb95da5f34ed3d3a32b42b124115573410bce8c4
 
 WORKDIR /app
 
