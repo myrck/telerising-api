@@ -24,7 +24,7 @@ RUN \
     chmod ug+x telerising/api && \
     chmod ug+x telerising/ld-linux-x86-64.so.2
 
-FROM frolvlad/alpine-glibc:alpine-3.22@sha256:05978eb68871901ae13dd7642c1fbf8f2d51eeca72437d18917c66cb013f4d85
+FROM frolvlad/alpine-glibc:alpine-3.22@sha256:33358f19803c93062e4c4aa0856426498103025a83f19e9a1cd7d0a5bd6f22cd
 
 WORKDIR /app
 
