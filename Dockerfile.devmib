@@ -1,10 +1,10 @@
-FROM curlimages/curl@sha256:d94d07ba9e7d6de898b6d96c1a072f6f8266c687af78a74f380087a0addf5d17 AS tzdata
+FROM curlimages/curl@sha256:11e64e28c5f58c8d93ee95fcf22ac055f48b0bc440e0ce7d8013bbb5ad6aa8ac AS tzdata
 
 RUN \
     echo "**** download tzdata.zi ****" && \
     curl -L -o tzdata.zi https://raw.githubusercontent.com/eggert/tz/main/tzdata.zi
 
-FROM alpine:latest@sha256:25109184c71bdad752c8312a8623239686a9a2071e8825f20acb8f2198c3f659 AS build
+FROM alpine:latest@sha256:be2656061b536c1883c4034790e21d0a09c5aaaf51968b89368a3c0371ea2c9a AS build
 
 RUN apk update && \
     apk add --no-cache curl jq unzip && \
@@ -24,7 +24,7 @@ RUN \
     chmod ug+x telerising/api && \
     chmod ug+x telerising/ld-linux-x86-64.so.2
 
-FROM frolvlad/alpine-glibc:alpine-3.22@sha256:05978eb68871901ae13dd7642c1fbf8f2d51eeca72437d18917c66cb013f4d85
+FROM frolvlad/alpine-glibc:alpine-3.22@sha256:5c5c8ca18915cd196d4324e4670e6778035fc9c2fbb558a1dd7e39755fa1260b
 
 WORKDIR /app
 
